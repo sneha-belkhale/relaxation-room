@@ -1,5 +1,5 @@
 import AutomotonParticles from './AutomotonParticles'
-import Stats from 'stats-js'
+// import Stats from 'stats-js'
 import {vertexShader, floorFragmentShader, genericFragmentShader, poolFloorFragmentShader} from './RoomShaders'
 
 var THREE = require('three');
@@ -7,7 +7,7 @@ var OBJLoader = require('three-obj-loader')(THREE);
 var OrbitControls = require('three-orbit-controls')(THREE);
 
 var scene, camera, renderer, controls;
-var mouse, raycaster, stats;
+var mouse, raycaster/*, stats */;
 var automotonParticles;
 var handMesh;
 var poolStateMachine;
@@ -94,9 +94,9 @@ export default function initWebScene() {
   window.addEventListener('click', moveHandOnClick)
 
   //set up stats
-  stats = new Stats();
-  stats.showPanel( 0 );
-  document.body.appendChild( stats.dom );
+  // stats = new Stats();
+  // stats.showPanel( 0 );
+  // document.body.appendChild( stats.dom );
 
   /** LIGHTS **/
   var light = new THREE.PointLight(0xffffff,1,800);
@@ -282,9 +282,9 @@ function update() {
     requestAnimationFrame(update);
     controls.update()
     poolStateMachine.update()
-    stats.begin()
+    // stats.begin()
     renderer.render(scene, camera);
-    stats.end()
+    // stats.end()
 
     //update automoton particles every 20 ms for a slightly choppier look
     if((time-lastTime) > 20 ){
